@@ -167,10 +167,13 @@ PY
   done
 }
 
-# Run BOTH retokenizes in parallel (24 workers each = 48 total = match core count).
-# This cuts wall time from ~5h sequential to ~3h parallel.
-retokenize_only 10240 "$SUB/tokenizers/fineweb_10240_bpe_lossless_caps_caseops_v1_reserved.model" 24
-retokenize_only 4096  "${SP4096_MODEL}.model" 24
+# Run BOTH retokenizes in parallel.
+# Default workers = max(NCPU/2 - 2, 4) so 16-core pods use 6 each, 48-core use 22 each.
+NCPU=$(nproc)
+WORKERS_PER=${WORKERS_PER:-$(python3 -c "print(max($NCPU // 2 - 2, 4))")}
+echo "[$(date)] NCPU=$NCPU WORKERS_PER=$WORKERS_PER (parallel SP10240+SP4096)"
+retokenize_only 10240 "$SUB/tokenizers/fineweb_10240_bpe_lossless_caps_caseops_v1_reserved.model" $WORKERS_PER
+retokenize_only 4096  "${SP4096_MODEL}.model" $WORKERS_PER
 
 # Wait for both retokenizes to finish.
 echo "[$(date)] waiting on retokenize PIDs: SP10240=$RETOK_PID_10240 SP4096=$RETOK_PID_4096"
