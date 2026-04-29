@@ -17,7 +17,7 @@
 set -euxo pipefail
 
 POD_ID=${RUNPOD_POD_ID:-}
-HARD_DEADLINE_MIN=${HARD_DEADLINE_MIN:-180}
+HARD_DEADLINE_MIN=${HARD_DEADLINE_MIN:-360}
 
 # Hard deadline kill switch.
 ( sleep $((HARD_DEADLINE_MIN*60)) && [ -n "$POD_ID" ] && runpodctl stop pod "$POD_ID" ) &
@@ -109,37 +109,45 @@ if [ ! -f "$SP4096_MODEL.model" ]; then
 fi
 ls -la $SP4096_MODEL.model
 
-# Helper: retokenize for given vocab_size + .model file -> upload to HF.
-retokenize_and_upload() {
+
+# Helper: retokenize-only (no upload).
+retokenize_only() {
   local VS=$1
   local MODEL=$2
-  local REPO_ID=$3
+  local WORKERS=$3
   local OUT=$WS/data/sp${VS}
   rm -rf "$OUT"
   mkdir -p "$OUT"
 
-  echo "[$(date)] === Retokenizing SP$VS ==="
-  python3 $SUB/prepare_caseops_data_parallel.py \
+  echo "[$(date)] === Retokenizing SP$VS (workers=$WORKERS) ==="
+  python3 -u $SUB/prepare_caseops_data_parallel.py \
     --docs "$DOCS" \
     --out  "$OUT" \
     --sp   "$MODEL" \
     --val-docs 50000 \
-    --workers 32 \
-    --chunksize 128 2>&1 | tail -20
+    --workers $WORKERS \
+    --chunksize 128 2>&1 | sed -u "s/^/[sp${VS}] /" &
+  declare -g RETOK_PID_${VS}=$!
+  echo "[$(date)] retokenize SP$VS PID=$!"
+}
 
-  # Output dir is hardcoded "fineweb10B_sp8192_..." — rename to vocab-specific name.
+# Helper: rename + upload (after retokenize_only finishes).
+finalize_and_upload() {
+  local VS=$1
+  local REPO_ID=$2
+  local OUT=$WS/data/sp${VS}
   local SRC_DIR="$OUT/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved"
   local DST_DIR="$OUT/datasets/fineweb10B_sp${VS}_lossless_caps_caseops_v1_reserved"
   if [ -d "$SRC_DIR" ] && [ "$SRC_DIR" != "$DST_DIR" ]; then
     mv "$SRC_DIR" "$DST_DIR"
   fi
-  ls -la "$DST_DIR" | head -5
+  ls -la "$DST_DIR" | head -3
   du -sh "$DST_DIR"
 
   echo "[$(date)] === Uploading SP$VS to HF $REPO_ID ==="
-  python3 - <<PY
+  for attempt in 1 2 3; do
+    if python3 - <<PY
 import os
-from pathlib import Path
 from huggingface_hub import HfApi
 api = HfApi(token=os.environ["HF_TOKEN"])
 api.create_repo(repo_id="$REPO_ID", repo_type="dataset", private=True, exist_ok=True)
@@ -149,20 +157,30 @@ api.upload_large_folder(
     repo_type="dataset",
     num_workers=8,
 )
-print("upload done")
+print("upload SP$VS done")
 PY
+    then
+      break
+    fi
+    echo "[$(date)] upload SP$VS attempt $attempt failed, retrying in 30s..."
+    sleep 30
+  done
 }
 
-# 1) SP10240 (primary)
-retokenize_and_upload 10240 \
-  "$SUB/tokenizers/fineweb_10240_bpe_lossless_caps_caseops_v1_reserved.model" \
-  "FijaEE/parameter-golf-sp10240-caseops"
+# Run BOTH retokenizes in parallel (24 workers each = 48 total = match core count).
+# This cuts wall time from ~5h sequential to ~3h parallel.
+retokenize_only 10240 "$SUB/tokenizers/fineweb_10240_bpe_lossless_caps_caseops_v1_reserved.model" 24
+retokenize_only 4096  "${SP4096_MODEL}.model" 24
 
-# 2) SP4096 (backup) — free up disk first
-rm -rf $WS/data/sp10240
-retokenize_and_upload 4096 \
-  "${SP4096_MODEL}.model" \
-  "FijaEE/parameter-golf-sp4096-caseops"
+# Wait for both retokenizes to finish.
+echo "[$(date)] waiting on retokenize PIDs: SP10240=$RETOK_PID_10240 SP4096=$RETOK_PID_4096"
+wait $RETOK_PID_10240
+wait $RETOK_PID_4096
+echo "[$(date)] both retokenizes done"
+
+# Upload SP10240 first (primary), then SP4096 (backup).
+finalize_and_upload 10240 "FijaEE/parameter-golf-sp10240-caseops"
+finalize_and_upload 4096  "FijaEE/parameter-golf-sp4096-caseops"
 
 echo "[$(date)] === Phase S retokenize ALL DONE ==="
 df -h /workspace 2>&1 | head -3
