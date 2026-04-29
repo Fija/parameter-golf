@@ -1,0 +1,2 @@
+seed,pre_quant_bpb,post_quant_bpb,ttt_bpb,artifact_bytes,eval_time_s
+42,1.07186415,1.08093087,1.06792170,15577232,531.7
