@@ -68,8 +68,11 @@ cd "$SUB"
 # --- Pull SP10240 dataset (uploaded by Phase S retokenize) ---
 DATA_DIR=/workspace/data/datasets/fineweb10B_sp10240_caseops
 mkdir -p "$DATA_DIR"
-SAMPLE=$DATA_DIR/datasets/fineweb10B_sp10240_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin
-if [ ! -f "$SAMPLE" ]; then
+# Robust to either upload layout (single or double "datasets/" prefix on HF)
+DATASET_NAME=fineweb10B_sp10240_lossless_caps_caseops_v1_reserved
+SAMPLE_SINGLE=$DATA_DIR/datasets/$DATASET_NAME/fineweb_train_000000.bin
+SAMPLE_DOUBLE=$DATA_DIR/datasets/datasets/$DATASET_NAME/fineweb_train_000000.bin
+if [ ! -f "$SAMPLE_SINGLE" ] && [ ! -f "$SAMPLE_DOUBLE" ]; then
   python3 - <<'PY'
 import os
 from huggingface_hub import snapshot_download
@@ -82,10 +85,20 @@ snapshot_download(
 PY
 fi
 
+# Pick whichever layout exists.
+if [ -f "$SAMPLE_DOUBLE" ]; then
+  DATA_REL=datasets/datasets/$DATASET_NAME
+elif [ -f "$SAMPLE_SINGLE" ]; then
+  DATA_REL=datasets/$DATASET_NAME
+else
+  echo "ERROR: SP10240 dataset not found at expected paths"; exit 1
+fi
+echo "[$(date)] DATA_REL=$DATA_REL"
+
 python3 test_ngram_legality.py
 
 # --- PR #1797 V2 base + BOS fix + PR #1855 9-hparam stack + EMBED_CLIP=20 + SP10240 ---
-export DATA_PATH=$DATA_DIR/datasets/fineweb10B_sp10240_lossless_caps_caseops_v1_reserved/
+export DATA_PATH=$DATA_DIR/$DATA_REL/
 export TOKENIZER_PATH=$SUB/tokenizers/fineweb_10240_bpe_lossless_caps_caseops_v1_reserved.model
 export VOCAB_SIZE=10240 CASEOPS_ENABLED=1
 export MAX_WALLCLOCK_SECONDS=620
