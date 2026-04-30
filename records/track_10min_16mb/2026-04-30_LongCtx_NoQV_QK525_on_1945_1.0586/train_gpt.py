@@ -3374,6 +3374,21 @@ def eval_val_ttt_phased(h, base_model, device, val_data, forward_ttt_train):
                 lora.parameters(), lr=local_lr,
                 momentum=h.ttt_beta1, weight_decay=h.ttt_weight_decay,
             )
+        if h.ttt_optimizer == "muon":
+            # Muon for TTT LoRA. LR typically needs 5-10x Adam LR; expose via
+            # TTT_MUON_LR_MULT env var (default 8x). Newton-Schulz orthogonalizes
+            # the per-batch LoRA A/B matrices (shape (bsz, rank, in_dim) — Muon's
+            # local path treats first dim as batch and the rest as 2D matrix).
+            muon_lr_mult = float(os.environ.get("TTT_MUON_LR_MULT", "8.0"))
+            return Muon(
+                lora.parameters(),
+                lr=local_lr * muon_lr_mult,
+                momentum=h.ttt_beta2,
+                backend_steps=int(os.environ.get("TTT_MUON_BACKEND_STEPS", "5")),
+                nesterov=True,
+                weight_decay=h.ttt_weight_decay,
+                row_normalize=False,
+            )
         return torch.optim.AdamW(
             lora.parameters(), lr=local_lr,
             betas=(h.ttt_beta1, h.ttt_beta2),
