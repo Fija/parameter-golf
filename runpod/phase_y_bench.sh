@@ -141,20 +141,27 @@ fa_replacement = '''def _select_fa_impl():
     cap = _t.cuda.get_device_capability(0)
     major, minor = cap
     name = f"sm_{major}{minor}"
-    # Both Blackwell variants: try FA4 first, fall back to FA2
+    # Mixed dispatch on Blackwell: basic attn -> FA4 (gets the speedup),
+    # varlen -> FA2 (FA4 varlen kwargs differ from FA3, not worth API translation)
     if major in (10, 12):
+        basic_fn, varlen_fn = None, None
         try:
-            from flash_attn.cute.interface import flash_attn_func, flash_attn_varlen_func
-            print(f"[fa-dispatch] {name}: FA4 (CuTe)", flush=True)
-            return flash_attn_func, flash_attn_varlen_func
+            from flash_attn.cute.interface import flash_attn_func as _fa4_func
+            basic_fn = _fa4_func
+            print(f"[fa-dispatch] {name}: basic=FA4 (CuTe)", flush=True)
         except (ImportError, RuntimeError, ModuleNotFoundError) as e:
-            print(f"[fa-dispatch] {name}: FA4 unavailable ({type(e).__name__}: {e}); falling back to FA2", flush=True)
-        from flash_attn import flash_attn_func, flash_attn_varlen_func
-        print(f"[fa-dispatch] {name}: FA2", flush=True)
-        return flash_attn_func, flash_attn_varlen_func
+            print(f"[fa-dispatch] {name}: FA4 basic unavailable ({type(e).__name__}); will use FA2", flush=True)
+        # FA2 for varlen + as fallback for basic
+        from flash_attn import flash_attn_func as _fa2_func, flash_attn_varlen_func as _fa2_varlen
+        if basic_fn is None:
+            basic_fn = _fa2_func
+            print(f"[fa-dispatch] {name}: basic=FA2 (fallback)", flush=True)
+        varlen_fn = _fa2_varlen
+        print(f"[fa-dispatch] {name}: varlen=FA2 (FA4 varlen kwargs incompat)", flush=True)
+        return basic_fn, varlen_fn
     if major == 9:
         from flash_attn_interface import flash_attn_func, flash_attn_varlen_func
-        print(f"[fa-dispatch] {name}: FA3", flush=True)
+        print(f"[fa-dispatch] {name}: FA3 (basic+varlen)", flush=True)
         return flash_attn_func, flash_attn_varlen_func
     raise NotImplementedError(f"no FA impl for {name}")
 
