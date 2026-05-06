@@ -76,15 +76,29 @@ case "$GPU_CAP" in
       pip install --break-system-packages --quiet flash-attn-3 || true
     ;;
   10.0)
-    echo "[$(date)] Blackwell DC: install FA4 (best-effort) + FA2 fallback"
-    pip install --break-system-packages --quiet cuda-python nvidia-cutlass-dsl 2>&1 | tail -3 || true
-    pip install --break-system-packages --quiet flash-attn-4 2>&1 | tail -3 || true
+    echo "[$(date)] Blackwell DC: install FA4 (CuTeDSL) deps with version pin"
+    # Discovered via dynamic SSH debug (commit-msg below):
+    # - flash_attn.cute is bundled in flash-attn-3 (already in image), NOT a separate flash-attn-4 pip pkg
+    # - Needs cuda-python (image lacks)
+    # - Needs nvidia-cutlass-dsl ==4.2.1 SPECIFICALLY (4.3+ removed cutlass/utils/ampere_helpers.py
+    #   which flash_attn/cute/flash_fwd.py hard-imports)
+    # - cutlass.cute.experimental does an unconditional CUDA>=13.1 check and raises NotImplementedError
+    #   on CUDA 12.8 image. Must stub it (forward-only attention does not need experimental kernels)
+    pip install --break-system-packages --quiet cuda-python 2>&1 | tail -2 || true
+    pip install --break-system-packages --quiet "nvidia-cutlass-dsl==4.2.1" 2>&1 | tail -2 || true
+    EXP=/usr/local/lib/python3.12/dist-packages/nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/__init__.py
+    if [ -f "$EXP" ] && grep -q "NotImplementedError" "$EXP"; then
+      echo "[$(date)] stubbing $EXP (CUDA 13.1+ check)"
+      cp "$EXP" "$EXP.orig"
+      cat > "$EXP" <<EOF_STUB
+import warnings
+warnings.warn("cutlass.cute.experimental stubbed (CUDA <13.1)", stacklevel=2)
+EOF_STUB
+    fi
     python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4 OK')" 2>&1 | head -5 || \
-      echo "[INFO] FA4 unavailable on sm_100 — will use FA2"
-    # Always install FA2 as guaranteed fallback on Blackwell DC
-    pip install --break-system-packages --quiet flash-attn 2>&1 | tail -3 || true
-    python3 -c "from flash_attn import flash_attn_func; print('FA2 OK')" 2>&1 | head -3 || \
-      echo "[WARN] FA2 also missing"
+      echo "[WARN] FA4 import still fails after pin+stub"
+    # Belt-and-suspenders FA2 fallback (the dispatcher will use whichever works first)
+    pip install --break-system-packages --quiet flash-attn 2>&1 | tail -2 || true
     ;;
   12.0)
     echo "[$(date)] Blackwell Workstation: trying FA4 + FA2 fallback"
