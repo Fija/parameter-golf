@@ -198,8 +198,34 @@ grep -B 1 -A 12 "_cap = torch.cuda.get_device_capability(a.device)" $TRAIN_PY | 
 
 # --- 6. Pull docs + mini-retokenize SP8192 (only first 50K docs) ---
 cd $REPO
+# OPTIMIZATION v4: HTTP Range download — only first 200 MB of docs_selected.jsonl
+# The full file is 45 GB but we need ~50 MB for 100 steps × 786K tokens. Range cap at 200 MB
+# gives us ~40K+ docs (way more than 20K needed) with 99.5% bandwidth saving.
+# 200 MB at community 22 MB/s = 9 seconds (vs 35 min for 45 GB).
 DOCS=$REPO/data/docs_selected.jsonl
-[ ! -f "$DOCS" ] && { echo "[$(date)] === Downloading docs ==="; python3 data/cached_challenge_fineweb.py --variant sp1024 --train-shards 0 --with-docs 2>&1 | tail -5 || { echo "[FATAL] docs"; exit 1; }; }
+RANGE_BYTES=${RANGE_BYTES:-209715200}    # 200 MB default
+if [ ! -f "$DOCS" ]; then
+  echo "[$(date)] === Range-download docs_selected.jsonl (first $RANGE_BYTES bytes) ==="
+  mkdir -p $(dirname "$DOCS")
+  HF_DOCS_URL="https://huggingface.co/datasets/willdepueoai/parameter-golf/resolve/main/datasets/docs_selected.jsonl"
+  T0=$(date +%s)
+  curl -fsSL \
+    -H "Authorization: Bearer $HF_TOKEN" \
+    -H "Range: bytes=0-$((RANGE_BYTES - 1))" \
+    "$HF_DOCS_URL" -o "$DOCS" || { echo "[FATAL] range docs DL"; exit 1; }
+  T1=$(date +%s)
+  echo "[$(date)] range DL took $((T1-T0))s"
+  ls -la "$DOCS"
+  # Trim to last complete line (range may cut mid-line)
+  python3 -c "
+data = open('$DOCS', 'rb').read()
+last_nl = data.rfind(b'\n')
+open('$DOCS', 'wb').write(data[:last_nl + 1])
+import json
+n_lines = data[:last_nl].count(b'\n') + 1
+print(f'trimmed to {last_nl + 1} bytes, {n_lines} complete docs')
+"
+fi
 
 DATA_OUT=/workspace/data/sp8192
 DATASET_NAME=fineweb10B_sp8192_lossless_caps_caseops_v1_reserved
