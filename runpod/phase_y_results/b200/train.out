@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 33, in <module>
+    flash_attn_3_func, flash_attn_varlen_func = _select_fa_impl()
+                                                ^^^^^^^^^^^^^^^^^
+  File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 14, in _select_fa_impl
+    from flash_attn.cute.interface import flash_attn_func, flash_attn_varlen_func
+  File "/usr/local/lib/python3.12/dist-packages/flash_attn/cute/__init__.py", line 3, in <module>
+    from .interface import (
+  File "/usr/local/lib/python3.12/dist-packages/flash_attn/cute/interface.py", line 27, in <module>
+    import cuda.bindings.driver as cuda
+ModuleNotFoundError: No module named 'cuda'
+E0506 15:28:20.036000 5089 torch/distributed/elastic/multiprocessing/api.py:882] failed (exitcode: 1) local_rank: 0 (pid: 5158) of binary: /usr/local/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/launcher/api.py", line 293, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_gpt.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-05-06_15:28:20
+  host      : 0004ab385f2f
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 5158)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

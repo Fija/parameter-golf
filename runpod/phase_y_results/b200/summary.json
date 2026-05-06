@@ -1,0 +1,13 @@
+{
+  "tag": "b200",
+  "gpu_name": "unknown",
+  "gpu_capability": "10.0",
+  "nproc_per_node": 1,
+  "ctx": 3072,
+  "warmup_steps_excluded": 10,
+  "steady_state_steps": 0,
+  "throughput_mean_tok_per_s": null,
+  "throughput_median_tok_per_s": null,
+  "throughput_p10_tok_per_s": null,
+  "throughput_p90_tok_per_s": null
+}

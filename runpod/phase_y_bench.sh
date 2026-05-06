@@ -64,9 +64,9 @@ print(f'{cap[0]}.{cap[1]}')")
 GPU_NAME=$(python3 -c "import torch; print(torch.cuda.get_device_name(0))")
 echo "[$(date)] GPU detected: $GPU_NAME (sm_${GPU_CAP/./})"
 
-# --- 3. Pip deps + FA install ---
+# --- 3. Pip deps + FA install (cuda-python is the key fix for FA4) ---
 pip install --break-system-packages --quiet \
-  sentencepiece huggingface_hub python-minifier brotli zstandard numpy 2>&1 | tail -3 || true
+  sentencepiece huggingface_hub python-minifier brotli zstandard numpy cuda-python 2>&1 | tail -3 || true
 
 # Install appropriate flash-attn variant per capability
 case "$GPU_CAP" in
@@ -76,15 +76,17 @@ case "$GPU_CAP" in
       pip install --break-system-packages --quiet flash-attn-3 || true
     ;;
   10.0)
-    echo "[$(date)] Blackwell DC: installing FA4 (flash-attn-4)"
+    echo "[$(date)] Blackwell DC: installing FA4 (flash-attn-4) + cuda-python"
+    pip install --break-system-packages --quiet cuda-python nvidia-cutlass-dsl 2>&1 | tail -3 || true
     pip install --break-system-packages --quiet flash-attn-4 2>&1 | tail -3 || \
       pip install --break-system-packages --quiet "flash-attn-4[cu13]" 2>&1 | tail -3 || \
       echo "[WARN] FA4 install failed"
-    python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4 OK')" 2>&1 | head -3 || \
-      echo "[WARN] FA4 import failed"
+    python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4 OK')" 2>&1 | head -5 || \
+      echo "[FATAL] FA4 import failed even with cuda-python"
     ;;
   12.0)
     echo "[$(date)] Blackwell Workstation: trying FA4 + FA2 fallback"
+    pip install --break-system-packages --quiet cuda-python nvidia-cutlass-dsl 2>&1 | tail -3 || true
     pip install --break-system-packages --quiet flash-attn-4 2>&1 | tail -3 || true
     python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4-cute OK')" 2>&1 | head -3 || \
       echo "[INFO] FA4 not available on sm_120, will use FA2"
@@ -170,8 +172,39 @@ block_replacement = '''    _cap = torch.cuda.get_device_capability(a.device)
 new_src2, n = re.subn(block_pattern, block_replacement, new_src, count=1)
 assert n == 1, f"block patch failed (matched {n} times)"
 
+# Patch 3: PURE_BENCH_MODE — exit immediately after training loop, before any eval
+# Inject before the first "diagnostic pre-quantization" eval call
+bench_exit = '''    if int(os.environ.get("PURE_BENCH_MODE", "0")):
+        if int(os.environ.get("RANK", "0")) == 0:
+            print("[PURE_BENCH_MODE] training complete, skipping eval and exiting", flush=True)
+        import sys as _sys
+        _sys.exit(0)
+'''
+diag_marker = 'val_loss, val_bpb = '
+# Find the first occurrence of evaluation post-training; inject our exit before it
+hits = list(re.finditer(r"^(\s+)(val_loss, val_bpb = .*?eval_val_diag)", new_src2, re.M))
+if hits:
+    # Inject before the first eval call after the training loop
+    h = hits[0]
+    indent = h.group(1)
+    new_src2 = new_src2[:h.start()] + indent + bench_exit.strip() + "\n" + new_src2[h.start():]
+    print(f"injected PURE_BENCH_MODE exit before {h.group(0)[:60]}...")
+else:
+    print("[WARN] PURE_BENCH_MODE inject site not found; falling back to print + exit pattern")
+    # Fallback: inject before "diagnostic pre-quantization" print
+    p = new_src2.find('"diagnostic pre-quantization')
+    if p > 0:
+        # walk back to start of statement
+        line_start = new_src2.rfind("\n", 0, p) + 1
+        indent_len = 0
+        while line_start + indent_len < len(new_src2) and new_src2[line_start + indent_len] in " \\t":
+            indent_len += 1
+        indent = new_src2[line_start:line_start + indent_len]
+        new_src2 = new_src2[:line_start] + indent + bench_exit.strip().replace("\\n    ", "\\n" + indent) + "\\n" + new_src2[line_start:]
+        print(f"fallback inject before diagnostic print at offset {p}")
+
 open(path, "w").write(new_src2)
-print(f"patched: FA dispatch + per-arch block sizes; orig at {path}.orig")
+print(f"patched: FA dispatch + per-arch block sizes + PURE_BENCH_MODE exit; orig at {path}.orig")
 PYPATCH
 
 grep -A 5 "_select_fa_impl" $TRAIN_PY | head -25
@@ -189,14 +222,13 @@ DATA_PATH_LOCAL=$DATA_OUT/datasets/$DATASET_NAME
 
 if [ ! -f "$DATA_PATH_LOCAL/fineweb_train_000000.bin" ]; then
   rm -rf "$DATA_OUT"; mkdir -p "$DATA_OUT"
-  echo "[$(date)] === Mini-retokenize SP8192 (first 50K docs only) ==="
-  # Slice docs to first 50K lines for fast tokenize (just enough for 100 steps)
-  head -n 50000 "$DOCS" > /workspace/docs_50k.jsonl
+  echo "[$(date)] === Mini-retokenize SP8192 (first 20K docs, ~80M tokens, enough for 100 steps) ==="
+  head -n 20000 "$DOCS" > /workspace/docs_20k.jsonl
   WORKERS=$(python3 -c "print(min($(nproc) - 8, 64))")
   python3 -u $SUB_PARALLEL/prepare_caseops_data_parallel.py \
-    --docs /workspace/docs_50k.jsonl --out "$DATA_OUT" \
+    --docs /workspace/docs_20k.jsonl --out "$DATA_OUT" \
     --sp "$SUB_PARALLEL/tokenizers/fineweb_8192_bpe_lossless_caps_caseops_v1_reserved.model" \
-    --val-docs 1000 --workers $WORKERS --chunksize 128 || { echo "[FATAL] retokenize"; exit 1; }
+    --val-docs 500 --workers $WORKERS --chunksize 128 || { echo "[FATAL] retokenize"; exit 1; }
 fi
 ls "$DATA_PATH_LOCAL" | head -3
 du -sh "$DATA_PATH_LOCAL"
@@ -226,8 +258,9 @@ export TTT_MASK=no_qv TTT_Q_LORA=0 TTT_V_LORA=0 TTT_LOCAL_LR_MULT=0.75 QK_GAIN_I
 export NGRAM_MIX_ENABLED=0 TEMP_SCALE_ENABLED=0 PPM_MIX_ENABLED=0
 # Skip TTT short-doc machinery for bench
 export TTT_SHORT_SCORE_FIRST_ENABLED=0 TTT_WARM_START_MEAN_ENABLED=0
-# Disable post-training eval (bench-only mode)
-export EVAL_AT_END=0
+# PURE_BENCH_MODE: hard-exit after 100 train steps via injected sys.exit(0); skip ALL eval
+export PURE_BENCH_MODE=1
+export TRAIN_LOG_EVERY=10                              # log every 10 steps (10 datapoints over 100 steps)
 
 mkdir -p /workspace/runs
 RID=phy_${PROBE_TAG}
@@ -247,14 +280,10 @@ log = open("$RDIR/train.out").read()
 # or:               "step  20/100 | loss 5.72 | lr_mul 0.10 | mom 0.85 | 0.55 steps/s | 9s"
 rows = []
 for ln in log.split("\n"):
-    m = re.search(r"step\s+(\d+)/\d+.*?(?:train_loss|loss)[:\s]+([\d.]+).*?(?:train_time|wallclock|\b)\s*([\d.]+)?(?:m|s)?.*?(?:tok/s|steps/s)[:\s]+([\d.]+)", ln)
+    # PR #2014 format: "N/100 train_loss: X train_time: Ym tok/s: Z"
+    m = re.search(r"^(\d+)/\d+\s+train_loss:\s+([\d.]+)\s+train_time:\s+([\d.]+)m\s+tok/s:\s+(\d+)", ln)
     if m:
-        rows.append({"step": int(m.group(1)), "loss": float(m.group(2)), "wallclock_s_or_m": m.group(3), "throughput": float(m.group(4))})
-    else:
-        # simpler "step N/M ... tok/s X" pattern
-        m2 = re.search(r"step\s+(\d+)/\d+.*?(\d{4,})\s*(?:tok/s|tokens/s)?", ln, re.I)
-        if m2:
-            rows.append({"step": int(m2.group(1)), "tok_per_s": float(m2.group(2))})
+        rows.append({"step": int(m.group(1)), "loss": float(m.group(2)), "train_time_min": float(m.group(3)), "throughput": float(m.group(4))})
 
 # Save raw step rows
 with open("/workspace/runs/$RID/steps.csv", "w") as f:

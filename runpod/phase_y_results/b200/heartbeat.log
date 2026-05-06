@@ -1,0 +1,75 @@
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:26:00
+[15:26:00] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:26:30
+[15:26:30] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ tail -1
++ df -h /workspace
++ awk '{printf "%s ", $5}'
+2% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:27:00
+[15:27:00] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+18% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:27:30
+[15:27:30] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+1+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+23% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:28:00
+[15:28:00] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+1+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+23% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin
+++ wc -l
++ shards=2
++ printf 'sp8192=%d\n' 2
+sp8192=2

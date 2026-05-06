@@ -1,0 +1,855 @@
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:16:49
+[15:16:49] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:17:19
+[15:17:19] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+4% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:17:49
+[15:17:49] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+18% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:18:19
+[15:18:19] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+18% ++ ls '/workspace/data/sp8192/datasets/*/fineweb_*.bin'
+++ wc -l
++ shards=0
++ printf 'sp8192=%d\n' 0
+sp8192=0
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:18:49
+[15:18:49] + grep -v grep
++ ps -ef
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+1+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+23% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin
+++ wc -l
++ shards=3
++ printf 'sp8192=%d\n' 3
+sp8192=3
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:19:19
+[15:19:19] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+23% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:19:50
+[15:19:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+23% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:20:20
+[15:20:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ awk '{printf "%s ", $5}'
++ tail -1
+23% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:20:50
+[15:20:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:21:20
+[15:21:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:21:50
+[15:21:50] + ps -ef
++ grep -v grep
++ tr -d '\n'
++ grep -cE 'prepare_caseops|train_gpt'
+5+ printf ' procs disk='
+ procs disk=+ tail -1
++ df -h /workspace
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:22:20
+[15:22:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:22:50
+[15:22:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:23:20
+[15:23:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:23:50
+[15:23:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:24:20
+[15:24:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:24:50
+[15:24:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:25:20
+[15:25:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:25:50
+[15:25:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:26:20
+[15:26:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:26:50
+[15:26:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:27:20
+[15:27:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:27:50
+[15:27:50] + ps -ef
++ grep -v grep
++ tr -d '\n'
++ grep -cE 'prepare_caseops|train_gpt'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:28:20
+[15:28:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:28:50
+[15:28:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:29:20
+[15:29:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:29:50
+[15:29:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:30:20
+[15:30:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:30:50
+[15:30:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:31:20
+[15:31:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+24% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:31:50
+[15:31:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:32:20
+[15:32:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:32:50
+[15:32:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:33:20
+[15:33:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:33:50
+[15:33:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:34:20
+[15:34:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:34:50
+[15:34:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:35:20
+[15:35:20] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:35:50
+[15:35:50] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:36:21
+[15:36:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:36:51
+[15:36:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:37:21
+[15:37:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:37:51
+[15:37:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:38:21
+[15:38:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:38:51
+[15:38:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:39:21
+[15:39:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:39:51
+[15:39:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:40:21
+[15:40:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:40:51
+[15:40:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:41:21
+[15:41:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:41:51
+[15:41:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:42:21
+[15:42:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:42:51
+[15:42:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:43:21
+[15:43:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:43:51
+[15:43:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:44:21
+[15:44:21] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+5+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ wc -l
+++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
+++ date -u +%H:%M:%S
++ printf '[%s] ' 15:44:51
+[15:44:51] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+1+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+25% ++ ls /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000001.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000002.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000003.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_000004.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_000000.bin /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_000000.bin
+++ wc -l
++ shards=7
++ printf 'sp8192=%d\n' 7
+sp8192=7
