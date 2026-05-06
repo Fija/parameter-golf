@@ -76,13 +76,15 @@ case "$GPU_CAP" in
       pip install --break-system-packages --quiet flash-attn-3 || true
     ;;
   10.0)
-    echo "[$(date)] Blackwell DC: installing FA4 (flash-attn-4) + cuda-python"
+    echo "[$(date)] Blackwell DC: install FA4 (best-effort) + FA2 fallback"
     pip install --break-system-packages --quiet cuda-python nvidia-cutlass-dsl 2>&1 | tail -3 || true
-    pip install --break-system-packages --quiet flash-attn-4 2>&1 | tail -3 || \
-      pip install --break-system-packages --quiet "flash-attn-4[cu13]" 2>&1 | tail -3 || \
-      echo "[WARN] FA4 install failed"
+    pip install --break-system-packages --quiet flash-attn-4 2>&1 | tail -3 || true
     python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4 OK')" 2>&1 | head -5 || \
-      echo "[FATAL] FA4 import failed even with cuda-python"
+      echo "[INFO] FA4 unavailable on sm_100 — will use FA2"
+    # Always install FA2 as guaranteed fallback on Blackwell DC
+    pip install --break-system-packages --quiet flash-attn 2>&1 | tail -3 || true
+    python3 -c "from flash_attn import flash_attn_func; print('FA2 OK')" 2>&1 | head -3 || \
+      echo "[WARN] FA2 also missing"
     ;;
   12.0)
     echo "[$(date)] Blackwell Workstation: trying FA4 + FA2 fallback"
@@ -125,20 +127,14 @@ fa_replacement = '''def _select_fa_impl():
     cap = _t.cuda.get_device_capability(0)
     major, minor = cap
     name = f"sm_{major}{minor}"
-    # Blackwell DC sm_100 -> FA4 (flash-attn-4 CuTe-DSL)
-    # Blackwell WK sm_120 -> try FA4 then FA2 fallback
-    # Hopper sm_90      -> FA3 (original)
-    if major == 10:
-        from flash_attn.cute.interface import flash_attn_func, flash_attn_varlen_func
-        print(f"[fa-dispatch] {name}: FA4 (CuTe)", flush=True)
-        return flash_attn_func, flash_attn_varlen_func
-    if major == 12:
+    # Both Blackwell variants: try FA4 first, fall back to FA2
+    if major in (10, 12):
         try:
             from flash_attn.cute.interface import flash_attn_func, flash_attn_varlen_func
             print(f"[fa-dispatch] {name}: FA4 (CuTe)", flush=True)
             return flash_attn_func, flash_attn_varlen_func
-        except (ImportError, RuntimeError) as e:
-            print(f"[fa-dispatch] {name}: FA4 unavailable ({e}); falling back to FA2", flush=True)
+        except (ImportError, RuntimeError, ModuleNotFoundError) as e:
+            print(f"[fa-dispatch] {name}: FA4 unavailable ({type(e).__name__}: {e}); falling back to FA2", flush=True)
         from flash_attn import flash_attn_func, flash_attn_varlen_func
         print(f"[fa-dispatch] {name}: FA2", flush=True)
         return flash_attn_func, flash_attn_varlen_func
