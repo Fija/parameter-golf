@@ -172,39 +172,28 @@ block_replacement = '''    _cap = torch.cuda.get_device_capability(a.device)
 new_src2, n = re.subn(block_pattern, block_replacement, new_src, count=1)
 assert n == 1, f"block patch failed (matched {n} times)"
 
-# Patch 3: PURE_BENCH_MODE — exit immediately after training loop, before any eval
-# Inject before the first "diagnostic pre-quantization" eval call
-bench_exit = '''    if int(os.environ.get("PURE_BENCH_MODE", "0")):
-        if int(os.environ.get("RANK", "0")) == 0:
-            print("[PURE_BENCH_MODE] training complete, skipping eval and exiting", flush=True)
-        import sys as _sys
-        _sys.exit(0)
-'''
-diag_marker = 'val_loss, val_bpb = '
-# Find the first occurrence of evaluation post-training; inject our exit before it
-hits = list(re.finditer(r"^(\s+)(val_loss, val_bpb = .*?eval_val_diag)", new_src2, re.M))
-if hits:
-    # Inject before the first eval call after the training loop
-    h = hits[0]
-    indent = h.group(1)
-    new_src2 = new_src2[:h.start()] + indent + bench_exit.strip() + "\n" + new_src2[h.start():]
-    print(f"injected PURE_BENCH_MODE exit before {h.group(0)[:60]}...")
-else:
-    print("[WARN] PURE_BENCH_MODE inject site not found; falling back to print + exit pattern")
-    # Fallback: inject before "diagnostic pre-quantization" print
-    p = new_src2.find('"diagnostic pre-quantization')
-    if p > 0:
-        # walk back to start of statement
-        line_start = new_src2.rfind("\n", 0, p) + 1
-        indent_len = 0
-        while line_start + indent_len < len(new_src2) and new_src2[line_start + indent_len] in " \\t":
-            indent_len += 1
-        indent = new_src2[line_start:line_start + indent_len]
-        new_src2 = new_src2[:line_start] + indent + bench_exit.strip().replace("\\n    ", "\\n" + indent) + "\\n" + new_src2[line_start:]
-        print(f"fallback inject before diagnostic print at offset {p}")
+# Patch 3: PURE_BENCH_MODE — find the timed_eval(...) call whose first arg is the diagnostic
+# pre-quantization string, and inject our exit BEFORE the timed_eval line (not inside its args).
+m = re.search(r"(\n)(\s*)timed_eval\(\s*\n\s*\"diagnostic pre-quantization", new_src2)
+assert m, "PURE_BENCH_MODE inject site not found (expected timed_eval(\\n...\"diagnostic pre-quantization)"
+indent = m.group(2)
+inject = (m.group(1)
+          + indent + 'if int(__import__("os").environ.get("PURE_BENCH_MODE", "0")):\n'
+          + indent + '    print("[PURE_BENCH_MODE] training complete, skipping eval and exiting", flush=True)\n'
+          + indent + '    import sys as _sys; _sys.exit(0)\n')
+new_src2 = new_src2[:m.start()] + inject + new_src2[m.start()+1:]
+print(f"injected PURE_BENCH_MODE exit before timed_eval('diagnostic pre-quantization' ...)")
 
 open(path, "w").write(new_src2)
-print(f"patched: FA dispatch + per-arch block sizes + PURE_BENCH_MODE exit; orig at {path}.orig")
+
+# Verify the patched file actually parses as valid Python
+import py_compile
+try:
+    py_compile.compile(path, doraise=True)
+    print(f"patched + syntax valid: {path}")
+except py_compile.PyCompileError as e:
+    print(f"[FATAL] patched train_gpt.py has syntax error: {e}")
+    sys.exit(1)
 PYPATCH
 
 grep -A 5 "_select_fa_impl" $TRAIN_PY | head -25
