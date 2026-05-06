@@ -157,7 +157,7 @@ block_replacement = '''    _cap = torch.cuda.get_device_capability(a.device)
         num_stages = 4 if forward else 3
     elif _cap == (10, 0):                                 # Blackwell DC (B200/B300)
         BLOCK_SIZE_M, BLOCK_SIZE_N, BLOCK_SIZE_K = 256, 128, 64
-        num_stages = 5 if forward else 4                  # +1 for HBM3e
+        num_stages = 4 if forward else 3                  # ns=5 (240KB) exceeds Triton's 232KB ceiling on sm_100; ns=4 (192KB) safe
     elif _cap == (12, 0):                                 # Blackwell Workstation (Pro 6000)
         BLOCK_SIZE_M, BLOCK_SIZE_N, BLOCK_SIZE_K = 128, 128, 64
         num_stages = 3 if forward else 2                  # 96 KB SMEM
