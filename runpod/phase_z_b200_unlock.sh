@@ -101,8 +101,17 @@ BRANCH=${BRANCH:-submission/pr1797-ngram-mix}
 REPO=/workspace/parameter-golf
 SUB_PARALLEL=$REPO/records/track_non_record_16mb/2026-04-28_PR1797_EmbedClipRelax_AblationStack
 SUB_TRAIN=$REPO/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583
+# Always sync to the latest tip of $BRANCH. The pre-baked image may have an
+# older snapshot — depth=1 fetch + hard-reset gets us exactly the branch tip.
 if [ ! -d "$REPO/.git" ]; then
   git clone --depth=1 --branch "$BRANCH" https://github.com/Fija/parameter-golf.git "$REPO" 2>&1 | tail -3
+else
+  echo "[$(date)] === re-syncing $REPO to origin/$BRANCH ==="
+  cd "$REPO"
+  git fetch --depth=1 origin "$BRANCH" 2>&1 | tail -3
+  git checkout -B "$BRANCH" "FETCH_HEAD" 2>&1 | tail -3
+  echo "[$(date)] === HEAD now: $(git rev-parse --short HEAD) — checking PR #2014 dir ==="
+  ls -la "$SUB_TRAIN/train_gpt.py" 2>&1 | head -2
 fi
 
 # Range download docs
