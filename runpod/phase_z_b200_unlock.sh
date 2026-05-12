@@ -101,18 +101,33 @@ BRANCH=${BRANCH:-submission/pr1797-ngram-mix}
 REPO=/workspace/parameter-golf
 SUB_PARALLEL=$REPO/records/track_non_record_16mb/2026-04-28_PR1797_EmbedClipRelax_AblationStack
 SUB_TRAIN=$REPO/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583
-# Always sync to the latest tip of $BRANCH. The pre-baked image may have an
-# older snapshot — depth=1 fetch + hard-reset gets us exactly the branch tip.
+# The runpod/parameter-golf:latest image pre-populates /workspace/parameter-golf
+# with a SNAPSHOT (no .git) that predates the PR #2014 reproduction dir.
+# Move it aside (preserve cached docs+tokenizers under /workspace/pg_image_cache)
+# and do a fresh clone of the requested $BRANCH so we get train_gpt.py.
+echo "[$(date)] === fresh-cloning $BRANCH into $REPO ==="
+if [ -d "$REPO" ] && [ ! -d "$REPO/.git" ]; then
+  echo "[$(date)] image-cached repo (no .git) found at $REPO; preserving data + tokenizers"
+  mkdir -p /workspace/pg_image_cache
+  [ -d "$REPO/data" ] && cp -a "$REPO/data" /workspace/pg_image_cache/ 2>&1 | tail -1 || true
+  [ -d "$REPO/tokenizers" ] && cp -a "$REPO/tokenizers" /workspace/pg_image_cache/ 2>&1 | tail -1 || true
+  rm -rf "$REPO"
+fi
 if [ ! -d "$REPO/.git" ]; then
-  git clone --depth=1 --branch "$BRANCH" https://github.com/Fija/parameter-golf.git "$REPO" 2>&1 | tail -3
+  git clone --depth=1 --branch "$BRANCH" https://github.com/Fija/parameter-golf.git "$REPO" 2>&1 | tail -5
 else
-  echo "[$(date)] === re-syncing $REPO to origin/$BRANCH ==="
   cd "$REPO"
   git fetch --depth=1 origin "$BRANCH" 2>&1 | tail -3
   git checkout -B "$BRANCH" "FETCH_HEAD" 2>&1 | tail -3
-  echo "[$(date)] === HEAD now: $(git rev-parse --short HEAD) — checking PR #2014 dir ==="
-  ls -la "$SUB_TRAIN/train_gpt.py" 2>&1 | head -2
 fi
+# Restore preserved data/tokenizers if not in fresh clone (they're tracked,
+# but the cache has the docs_selected.jsonl that's gitignored)
+[ -d /workspace/pg_image_cache/data ] && cp -an /workspace/pg_image_cache/data/* "$REPO/data/" 2>&1 | tail -1 || true
+
+echo "[$(date)] === HEAD now: $(cd $REPO && git rev-parse --short HEAD 2>&1) ==="
+echo "[$(date)] === train_gpt.py at SUB_TRAIN ==="
+ls -la "$SUB_TRAIN/train_gpt.py" 2>&1 | head -2
+ls -la "$SUB_PARALLEL/prepare_caseops_data_parallel.py" 2>&1 | head -2
 
 # Range download docs
 cd $REPO
