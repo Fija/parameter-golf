@@ -1,0 +1,20 @@
+{
+  "A_no_graphs": {
+    "tag": "A_no_graphs",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1378296.7777777778,
+    "throughput_median": 1377179.0,
+    "min_throughput": 1375385.0,
+    "max_throughput": 1385269.0
+  },
+  "B_cudagraphs": {
+    "tag": "B_cudagraphs",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1428985.5555555555,
+    "throughput_median": 1421437.0,
+    "min_throughput": 1412051.0,
+    "max_throughput": 1472442.0
+  }
+}

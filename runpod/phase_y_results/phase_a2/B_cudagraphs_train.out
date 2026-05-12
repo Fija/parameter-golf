@@ -1,0 +1,218 @@
++ cd /workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583
++ torchrun --standalone --nproc_per_node=1 /workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py
+[cuda-graphs] enabled via _inductor.config.triton.cudagraphs = True
+[fa-dispatch] sm_100: basic=FA4 (CuTe)
+[fa-dispatch] sm_100: varlen=FA2
+Hyperparameters:
+  adam_eps: 1e-08
+  adam_wd: 0.02
+  artifact_dir: 
+  attn_clip_sigmas: 13.0
+  attn_out_gate_enabled: False
+  attn_out_gate_src: proj
+  awq_lite_bits: 8
+  awq_lite_enabled: True
+  awq_lite_group_size: 64
+  awq_lite_group_top_k: 1
+  beta1: 0.9
+  beta2: 0.99
+  caseops_enabled: True
+  compile_shape_warmup: False
+  compile_shape_warmup_iters: 1
+  compile_shape_warmup_loop_modes: auto
+  compressor: pergroup
+  data_dir: ./data/
+  datasets_dir: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved
+  distributed: True
+  ema_decay: 0.9965
+  embed_bits: 7
+  embed_clip_sigmas: 14.0
+  embed_lr: 0.6
+  embed_wd: 0.085
+  enable_looping_at: 0.35
+  eval_include_tail: True
+  eval_seq_len: 3072
+  eval_stride: 64
+  fused_ce_enabled: True
+  gate_window: 12
+  gated_attn_enabled: False
+  gated_attn_init_std: 0.01
+  gated_attn_quant_gate: False
+  global_ttt_batch_seqs: 32
+  global_ttt_chunk_tokens: 32768
+  global_ttt_epochs: 1
+  global_ttt_grad_clip: 1.0
+  global_ttt_lr: 0.001
+  global_ttt_momentum: 0.9
+  global_ttt_respect_doc_boundaries: True
+  global_ttt_warmup_chunks: 0
+  global_ttt_warmup_start_lr: 0.0
+  gptq_calibration_batches: 16
+  gptq_reserve_seconds: 4.0
+  grad_accum_steps: 8
+  grad_clip_norm: 0.3
+  is_main_process: True
+  iterations: 100
+  ln_scale: True
+  local_rank: 0
+  logfile: logs/a2_B_cudagraphs.txt
+  logit_softcap: 30.0
+  loop_end: 5
+  loop_start: 3
+  lqer_asym_enabled: True
+  lqer_asym_group: 64
+  lqer_enabled: True
+  lqer_factor_bits: 4
+  lqer_gain_select: False
+  lqer_rank: 4
+  lqer_scope: all
+  lqer_top_k: 3
+  matrix_bits: 6
+  matrix_clip_sigmas: 12.85
+  matrix_lr: 0.026
+  max_wallclock_seconds: 300.0
+  midrun_cap_log_updates: False
+  midrun_cap_schedule: 
+  min_lr: 0.1
+  mlp_clip_sigmas: 11.5
+  mlp_mult: 4.0
+  model_dim: 512
+  model_path: final_model.pt
+  muon_backend_steps: 5
+  muon_momentum: 0.97
+  muon_momentum_warmup_start: 0.92
+  muon_momentum_warmup_steps: 1500
+  muon_row_normalize: True
+  muon_wd: 0.095
+  num_heads: 8
+  num_kv_heads: 4
+  num_layers: 11
+  num_loops: 2
+  parallel_final_lane: mean
+  parallel_start_layer: 8
+  phased_ttt_num_phases: 1
+  phased_ttt_prefix_docs: 2500
+  qk_gain_init: 5.25
+  quantized_model_path: final_model.int6.ptz
+  rank: 0
+  rope_base: 10000.0
+  rope_dims: 16
+  rope_train_seq_len: 2048
+  rope_yarn: False
+  run_id: a2_B_cudagraphs
+  scalar_lr: 0.02
+  seed: 42
+  seq_change_warmup_steps: 0
+  skip_gates_enabled: True
+  smear_gate_enabled: True
+  sparse_attn_gate_enabled: True
+  sparse_attn_gate_init_std: 0.0
+  sparse_attn_gate_scale: 0.5
+  tie_embeddings: True
+  tied_embed_init_std: 0.005
+  tied_embed_lr: 0.03
+  tokenizer_path: /workspace/parameter-golf/records/track_non_record_16mb/2026-04-28_PR1797_EmbedClipRelax_AblationStack/tokenizers/fineweb_8192_bpe_lossless_caps_caseops_v1_reserved.model
+  train_batch_tokens: 786432
+  train_files: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_*.bin
+  train_log_every: 10
+  train_seq_len: 3072
+  train_seq_schedule: 
+  train_seq_schedule_mode: wallclock
+  ttt_batch_size: 64
+  ttt_beta1: 0.0
+  ttt_beta2: 0.99
+  ttt_chunk_size: 48
+  ttt_enabled: True
+  ttt_eval_batches: 
+  ttt_eval_seq_len: 3072
+  ttt_grad_steps: 1
+  ttt_k_lora: True
+  ttt_local_lr_mult: 0.75
+  ttt_lora_lr: 0.0001
+  ttt_lora_rank: 80
+  ttt_mask: no_qv
+  ttt_mlp_lora: True
+  ttt_o_lora: True
+  ttt_optimizer: adam
+  ttt_q_lora: False
+  ttt_short_beta2: 0.99
+  ttt_short_chunk_size: 48
+  ttt_short_doc_len: 512
+  ttt_short_lora_enabled: False
+  ttt_short_lora_lr: 0.0001
+  ttt_short_lora_rank: 80
+  ttt_short_score_first_enabled: False
+  ttt_short_score_first_steps: 
+  ttt_short_weight_decay: 0.5
+  ttt_train_max_doc_len: 0
+  ttt_train_min_doc_len: 0
+  ttt_v_lora: False
+  ttt_warm_start_mean_doc_len: 512
+  ttt_warm_start_mean_enabled: False
+  ttt_warm_start_mean_momentum: 0.95
+  ttt_weight_decay: 0.5
+  val_batch_tokens: 524288
+  val_bytes_files: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_*.bin
+  val_doc_fraction: 1.0
+  val_files: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_*.bin
+  val_loss_every: 4000
+  vocab_size: 8192
+  warmdown_frac: 0.85
+  warmdown_iters: 0
+  warmup_steps: 20
+  world_size: 1
+  xsa_last_n: 11
+train_shards: 2
+val_tokens: 435128
+model_params:35945671
+train_seq_schedule:3072@1.000
+local_microbatch_tokens:98304
+growth_stage:seq_len:3072 progress:0.000
+gptq:reserving 4s, effective=296000ms
+warmup_cu_buckets:64,128,192,256 iters_each:3
+skipping cudagraphs due to graph with symbolic shapes inputs and config.triton.cudagraph_skip_dynamic_graphs=True. Found from   File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 2019, in zeropower_via_newtonschulz5
+    X = X / (X.norm(dim=(-2, -1), keepdim=True) + eps)
+
+
+skipping cudagraphs due to graph with symbolic shapes inputs and config.triton.cudagraph_skip_dynamic_graphs=True. Found from   File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 2019, in zeropower_via_newtonschulz5
+    X = X / (X.norm(dim=(-2, -1), keepdim=True) + eps)
+
+
+warmup_step: 1/20
+warmup_step: 2/20
+warmup_step: 3/20
+warmup_step: 4/20
+warmup_step: 5/20
+warmup_step: 6/20
+warmup_step: 10/20
+warmup_step: 20/20
+loop_warmup:enabled encoder:[0, 1, 2, 3, 4, 5, 3, 4] decoder:[5, 3, 4, 5, 6, 7, 8, 9, 10]
+loop_warmup_step: 1/20
+loop_warmup_step: 2/20
+loop_warmup_step: 3/20
+loop_warmup_step: 4/20
+loop_warmup_step: 5/20
+loop_warmup_step: 6/20
+loop_warmup_step: 10/20
+loop_warmup_step: 20/20
+0/100 val_loss: 9.0087 val_bpb: 4.2180
+1/100 train_loss: 9.0061 train_time: 0.0m tok/s: 2021616
+2/100 train_loss: 13.0082 train_time: 0.0m tok/s: 2603984
+3/100 train_loss: 11.3136 train_time: 0.0m tok/s: 1693318
+4/100 train_loss: 9.9511 train_time: 0.0m tok/s: 1754423
+5/100 train_loss: 8.6538 train_time: 0.0m tok/s: 1729812
+10/100 train_loss: 6.7262 train_time: 0.1m tok/s: 1546289
+20/100 train_loss: 5.8988 train_time: 0.2m tok/s: 1472442
+30/100 train_loss: 5.1329 train_time: 0.3m tok/s: 1446226
+40/100 train_loss: 4.8591 train_time: 0.4m tok/s: 1433889
+50/100 train_loss: 4.6892 train_time: 0.5m tok/s: 1425463
+60/100 train_loss: 4.7442 train_time: 0.6m tok/s: 1421437
+70/100 train_loss: 4.6435 train_time: 0.6m tok/s: 1419009
+80/100 train_loss: 4.5923 train_time: 0.7m tok/s: 1416087
+90/100 train_loss: 4.4924 train_time: 0.8m tok/s: 1414266
+100/100 train_loss: 4.3767 train_time: 0.9m tok/s: 1412051
+100/100 val_loss: 4.3009 val_bpb: 2.0137
+peak memory allocated: 41763 MiB reserved: 46282 MiB
+ema:applying EMA weights
+[PURE_BENCH_MODE] training complete, skipping eval
+[rank0]:[W512 05:57:43.788982557 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
