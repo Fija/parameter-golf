@@ -240,7 +240,13 @@ run_variant() {
   RDIR=/workspace/runs/$RID
   rm -rf "$RDIR"; mkdir -p "$RDIR"
   export RUN_ID=$RID SEED=42 QUANTIZED_MODEL_PATH=$RDIR/model.bin
-  torchrun --standalone --nproc_per_node=1 train_gpt.py 2>&1 | tee "$RDIR/train.out" || echo "[WARN] $tag returned non-zero"
+  echo "[$(date)] cwd at variant start: $(pwd)"
+  echo "[$(date)] SUB_TRAIN=$SUB_TRAIN"
+  echo "[$(date)] train_gpt.py at SUB_TRAIN: $(ls -la "$SUB_TRAIN/train_gpt.py" 2>&1 | head -1)"
+  ( cd "$SUB_TRAIN" && \
+    echo "[$(date)] subshell cwd: $(pwd)" && \
+    torchrun --standalone --nproc_per_node=1 "$SUB_TRAIN/train_gpt.py" \
+  ) 2>&1 | tee "$RDIR/train.out" || echo "[WARN] $tag returned non-zero"
 }
 
 # A: Triton 3.7 baseline (default block 256×128×64 ns=4) — measures pure Triton upgrade effect
