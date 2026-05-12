@@ -81,15 +81,14 @@ warnings.warn("cutlass.cute.experimental stubbed (CUDA <13.1)", stacklevel=2)
 EOF_STUB
 fi
 
-# Phase Z key change: upgrade Triton to 3.7+
-echo "[$(date)] === BEFORE: triton version ==="
+# Phase Z v6: keep image's Triton 3.5.1 — 3.7+ breaks torch 2.6 inductor
+# (KernelMetadata.cluster_dims AttributeError). Test ONLY block-size variants.
+echo "[$(date)] === triton version (kept at image default) ==="
 python3 -c "import triton; print('triton', triton.__version__)"
-pip install --break-system-packages --upgrade "triton>=3.7.0,<4.0" 2>&1 | tail -3 || true
-echo "[$(date)] === AFTER: triton version ==="
-python3 -c "import triton; print('triton', triton.__version__)"
+python3 -c "import torch; print('torch', torch.__version__)"
 
-# Verify everything still imports after Triton upgrade
-echo "[$(date)] === post-upgrade smoke tests ==="
+# Verify FA imports still work after cutlass-dsl install
+echo "[$(date)] === post-deps smoke tests ==="
 python3 -c "import torch; print('torch', torch.__version__)" 2>&1 | tail -3
 python3 -c "import triton; print('triton', triton.__version__)" 2>&1 | tail -3
 python3 -c "from flash_attn import flash_attn_func, flash_attn_varlen_func; print('FA2 OK')" 2>&1 | tail -3
@@ -281,25 +280,34 @@ run_variant() {
   ) 2>&1 | tee "$RDIR/train.out" || echo "[WARN] $tag returned non-zero"
 }
 
-# A: Triton 3.7 baseline (default block 256×128×64 ns=4) — measures pure Triton upgrade effect
+# Workload for MLP up-proj per fwd pass: M=batch*seq=3072, N=2048, K=512.
+# B200 has 148 SMs. Want tile-grid roughly ≥1 wave × 148.
+#
+# A: baseline 256×128×64 ns=4. grid = 12 × 16 = 192 tiles → 1.30 waves.
+# B: smaller M tile 128×128×64 ns=4. grid = 24 × 16 = 384 tiles → 2.60 waves
+#    (more parallelism — should help when launch overhead dominates).
+# C: wider N tile 128×256×64 ns=3. grid = 24 × 8 = 192 tiles → 1.30 waves,
+#    same total tiles but wider register tiles per CTA (good if compute-bound).
+
+# A: baseline — sanity check we match Phase Y v6 yesterday
 unset LRS_BLOCK_M LRS_BLOCK_N LRS_BLOCK_K LRS_NUM_STAGES_FWD LRS_NUM_STAGES_BWD
-run_variant A_triton37_baseline "Triton 3.7 + default 256x128x64 ns=4 (pure Triton upgrade)"
+run_variant A_baseline "256x128x64 ns=4/3 (= Phase Y v6 baseline)"
 
-# B: K-fat tile (more arithmetic intensity per tile)
-export LRS_BLOCK_M=128 LRS_BLOCK_N=256 LRS_BLOCK_K=128
-export LRS_NUM_STAGES_FWD=2 LRS_NUM_STAGES_BWD=2
-run_variant B_block_Kfat "Triton 3.7 + 128x256x128 ns=2 (K-fat tile, 192 KB SMEM)"
-
-# C: MN-fat tile (bigger output tile, smaller K)
-export LRS_BLOCK_M=256 LRS_BLOCK_N=256 LRS_BLOCK_K=32
+# B: more parallelism (M-fine)
+export LRS_BLOCK_M=128 LRS_BLOCK_N=128 LRS_BLOCK_K=64
 export LRS_NUM_STAGES_FWD=4 LRS_NUM_STAGES_BWD=3
-run_variant C_block_MNfat "Triton 3.7 + 256x256x32 ns=4 (MN-fat tile, 128 KB SMEM)"
+run_variant B_M_fine "128x128x64 ns=4/3 (grid 24×16 = 384 tiles, more parallelism)"
+
+# C: wider N tile (more register tile per CTA)
+export LRS_BLOCK_M=128 LRS_BLOCK_N=256 LRS_BLOCK_K=64
+export LRS_NUM_STAGES_FWD=3 LRS_NUM_STAGES_BWD=2
+run_variant C_N_wide "128x256x64 ns=3/2 (grid 24×8 = 192 tiles, wider regtile)"
 
 # ============= PARSE + UPLOAD =============
 python3 - <<'PYPARSE'
 import re, csv, statistics, json, os
 results = {}
-for tag in ("A_triton37_baseline", "B_block_Kfat", "C_block_MNfat"):
+for tag in ("A_baseline", "B_M_fine", "C_N_wide"):
     path = f"/workspace/runs/z_{tag}/train.out"
     if not os.path.exists(path): continue
     log = open(path).read()
@@ -341,7 +349,7 @@ import os, glob
 from huggingface_hub import HfApi
 api = HfApi(token=os.environ["HF_TOKEN"])
 api.create_repo(repo_id="FijaEE/parameter-golf-fa4-bench", repo_type="dataset", private=True, exist_ok=True)
-for tag in ("A_triton37_baseline", "B_block_Kfat", "C_block_MNfat"):
+for tag in ("A_baseline", "B_M_fine", "C_N_wide"):
     for f in glob.glob(f"/workspace/runs/z_{tag}/*"):
         if os.path.isfile(f):
             try:
