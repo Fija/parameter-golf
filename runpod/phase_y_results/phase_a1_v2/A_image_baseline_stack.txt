@@ -1,0 +1,5 @@
+[Tue May 12 01:46:06 UTC 2026] === stack snapshot (A_image_baseline) ===
+torch 2.9.1+cu128 cuda 12.8
+triton 3.5.1
+flash_attn 2.8.3
+FA4 cute OK

@@ -1,0 +1,20 @@
+{
+  "A_image_baseline": {
+    "tag": "A_image_baseline",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1378360.111111111,
+    "throughput_median": 1377254.0,
+    "min_throughput": 1375375.0,
+    "max_throughput": 1385507.0
+  },
+  "B_triton36_only": {
+    "tag": "B_triton36_only",
+    "n_logged_steps": 0,
+    "n_steady_state": 0,
+    "throughput_mean": null,
+    "throughput_median": null,
+    "min_throughput": null,
+    "max_throughput": null
+  }
+}

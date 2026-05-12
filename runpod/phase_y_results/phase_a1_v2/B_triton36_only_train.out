@@ -1,0 +1,1152 @@
++ cd /workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583
++ torchrun --standalone --nproc_per_node=1 /workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py
+[fa-dispatch] sm_100: basic=FA4 (CuTe)
+[fa-dispatch] sm_100: varlen=FA2
+Hyperparameters:
+  adam_eps: 1e-08
+  adam_wd: 0.02
+  artifact_dir: 
+  attn_clip_sigmas: 13.0
+  attn_out_gate_enabled: False
+  attn_out_gate_src: proj
+  awq_lite_bits: 8
+  awq_lite_enabled: True
+  awq_lite_group_size: 64
+  awq_lite_group_top_k: 1
+  beta1: 0.9
+  beta2: 0.99
+  caseops_enabled: True
+  compile_shape_warmup: False
+  compile_shape_warmup_iters: 1
+  compile_shape_warmup_loop_modes: auto
+  compressor: pergroup
+  data_dir: ./data/
+  datasets_dir: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved
+  distributed: True
+  ema_decay: 0.9965
+  embed_bits: 7
+  embed_clip_sigmas: 14.0
+  embed_lr: 0.6
+  embed_wd: 0.085
+  enable_looping_at: 0.35
+  eval_include_tail: True
+  eval_seq_len: 3072
+  eval_stride: 64
+  fused_ce_enabled: True
+  gate_window: 12
+  gated_attn_enabled: False
+  gated_attn_init_std: 0.01
+  gated_attn_quant_gate: False
+  global_ttt_batch_seqs: 32
+  global_ttt_chunk_tokens: 32768
+  global_ttt_epochs: 1
+  global_ttt_grad_clip: 1.0
+  global_ttt_lr: 0.001
+  global_ttt_momentum: 0.9
+  global_ttt_respect_doc_boundaries: True
+  global_ttt_warmup_chunks: 0
+  global_ttt_warmup_start_lr: 0.0
+  gptq_calibration_batches: 16
+  gptq_reserve_seconds: 4.0
+  grad_accum_steps: 8
+  grad_clip_norm: 0.3
+  is_main_process: True
+  iterations: 100
+  ln_scale: True
+  local_rank: 0
+  logfile: logs/a1_B_triton36_only.txt
+  logit_softcap: 30.0
+  loop_end: 5
+  loop_start: 3
+  lqer_asym_enabled: True
+  lqer_asym_group: 64
+  lqer_enabled: True
+  lqer_factor_bits: 4
+  lqer_gain_select: False
+  lqer_rank: 4
+  lqer_scope: all
+  lqer_top_k: 3
+  matrix_bits: 6
+  matrix_clip_sigmas: 12.85
+  matrix_lr: 0.026
+  max_wallclock_seconds: 300.0
+  midrun_cap_log_updates: False
+  midrun_cap_schedule: 
+  min_lr: 0.1
+  mlp_clip_sigmas: 11.5
+  mlp_mult: 4.0
+  model_dim: 512
+  model_path: final_model.pt
+  muon_backend_steps: 5
+  muon_momentum: 0.97
+  muon_momentum_warmup_start: 0.92
+  muon_momentum_warmup_steps: 1500
+  muon_row_normalize: True
+  muon_wd: 0.095
+  num_heads: 8
+  num_kv_heads: 4
+  num_layers: 11
+  num_loops: 2
+  parallel_final_lane: mean
+  parallel_start_layer: 8
+  phased_ttt_num_phases: 1
+  phased_ttt_prefix_docs: 2500
+  qk_gain_init: 5.25
+  quantized_model_path: final_model.int6.ptz
+  rank: 0
+  rope_base: 10000.0
+  rope_dims: 16
+  rope_train_seq_len: 2048
+  rope_yarn: False
+  run_id: a1_B_triton36_only
+  scalar_lr: 0.02
+  seed: 42
+  seq_change_warmup_steps: 0
+  skip_gates_enabled: True
+  smear_gate_enabled: True
+  sparse_attn_gate_enabled: True
+  sparse_attn_gate_init_std: 0.0
+  sparse_attn_gate_scale: 0.5
+  tie_embeddings: True
+  tied_embed_init_std: 0.005
+  tied_embed_lr: 0.03
+  tokenizer_path: /workspace/parameter-golf/records/track_non_record_16mb/2026-04-28_PR1797_EmbedClipRelax_AblationStack/tokenizers/fineweb_8192_bpe_lossless_caps_caseops_v1_reserved.model
+  train_batch_tokens: 786432
+  train_files: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_train_*.bin
+  train_log_every: 10
+  train_seq_len: 3072
+  train_seq_schedule: 
+  train_seq_schedule_mode: wallclock
+  ttt_batch_size: 64
+  ttt_beta1: 0.0
+  ttt_beta2: 0.99
+  ttt_chunk_size: 48
+  ttt_enabled: True
+  ttt_eval_batches: 
+  ttt_eval_seq_len: 3072
+  ttt_grad_steps: 1
+  ttt_k_lora: True
+  ttt_local_lr_mult: 0.75
+  ttt_lora_lr: 0.0001
+  ttt_lora_rank: 80
+  ttt_mask: no_qv
+  ttt_mlp_lora: True
+  ttt_o_lora: True
+  ttt_optimizer: adam
+  ttt_q_lora: False
+  ttt_short_beta2: 0.99
+  ttt_short_chunk_size: 48
+  ttt_short_doc_len: 512
+  ttt_short_lora_enabled: False
+  ttt_short_lora_lr: 0.0001
+  ttt_short_lora_rank: 80
+  ttt_short_score_first_enabled: False
+  ttt_short_score_first_steps: 
+  ttt_short_weight_decay: 0.5
+  ttt_train_max_doc_len: 0
+  ttt_train_min_doc_len: 0
+  ttt_v_lora: False
+  ttt_warm_start_mean_doc_len: 512
+  ttt_warm_start_mean_enabled: False
+  ttt_warm_start_mean_momentum: 0.95
+  ttt_weight_decay: 0.5
+  val_batch_tokens: 524288
+  val_bytes_files: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_bytes_*.bin
+  val_doc_fraction: 1.0
+  val_files: /workspace/data/sp8192/datasets/fineweb10B_sp8192_lossless_caps_caseops_v1_reserved/fineweb_val_*.bin
+  val_loss_every: 4000
+  vocab_size: 8192
+  warmdown_frac: 0.85
+  warmdown_iters: 0
+  warmup_steps: 20
+  world_size: 1
+  xsa_last_n: 11
+train_shards: 2
+val_tokens: 435128
+model_params:35945671
+train_seq_schedule:3072@1.000
+local_microbatch_tokens:98304
+growth_stage:seq_len:3072 progress:0.000
+gptq:reserving 4s, effective=296000ms
+warmup_cu_buckets:64,128,192,256 iters_each:3
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:37.962000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.004000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.040000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.119000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.154000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.193000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.231000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.268000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.307000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.355000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.398000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.558000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.623000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.688000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.753000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.816000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.891000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:38.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.031000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.101000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.178000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.505000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.583000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.881000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:39.995000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:40.110000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:40.223000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:40.342000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:40.446000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:40.549000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:40.651000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:40.754000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:44.338000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:44.339000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:44.867000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:44.868000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:44.961000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:44.963000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.053000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.055000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.144000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.145000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.249000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.250000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.348000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.350000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.449000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.450000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.546000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.547000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.666000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.667000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.769000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:45.770000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.262000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.264000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.443000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.444000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.615000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.616000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.744000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.745000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.873000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:52.874000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.001000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.002000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.134000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.135000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.251000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.252000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.367000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.368000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.482000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.483000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.599000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] Traceback (most recent call last):
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 924, in identify_mutated_tensors
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     ttir_module, ordered_tensor_names = generate_ttir(
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                                         ^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 419, in generate_ttir
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     specialization = _get_specialization(ordered_args.values())
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]   File "/usr/local/lib/python3.12/dist-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 390, in _get_specialization
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0]     from triton.runtime.jit import specialize_impl as specialize_impl_orig
+[rank0]:W0512 01:52:53.600000 17334 torch/_higher_order_ops/triton_kernel_wrap.py:948] [0/0] ImportError: cannot import name 'specialize_impl' from 'triton.runtime.jit' (/usr/local/lib/python3.12/dist-packages/triton/runtime/jit.py)
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 4580, in <module>
+[rank0]:     main()
+[rank0]:   File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 4574, in main
+[rank0]:     train_and_eval(h, device)
+[rank0]:   File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 4374, in train_and_eval
+[rank0]:     base_model, compiled_model, compiled_forward_logits = train_model(
+[rank0]:                                                           ^^^^^^^^^^^^
+[rank0]:   File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 4171, in train_model
+[rank0]:     _run_cu_bucket_warmup(seq_len)
+[rank0]:   File "/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py", line 4153, in _run_cu_bucket_warmup
+[rank0]:     (wloss / h.grad_accum_steps).backward()
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_tensor.py", line 625, in backward
+[rank0]:     torch.autograd.backward(
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/autograd/__init__.py", line 354, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/autograd/graph.py", line 841, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/autograd/function.py", line 315, in apply
+[rank0]:     return user_fn(self, *args)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 2303, in backward
+[rank0]:     return impl_fn()
+[rank0]:            ^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 2289, in impl_fn
+[rank0]:     out = CompiledFunction._backward_impl(ctx, all_args)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 2432, in _backward_impl
+[rank0]:     CompiledFunction.compiled_bw = aot_config.bw_compiler(
+[rank0]:                                    ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_functorch/_aot_autograd/schemas.py", line 1251, in __call__
+[rank0]:     return self.compiler_fn(gm, example_inputs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_dynamo/backends/common.py", line 82, in _wrapped_bw_compiler
+[rank0]:     disable(
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_dynamo/eval_frame.py", line 1044, in _fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_utils_internal.py", line 92, in wrapper_function
+[rank0]:     return function(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/compile_fx.py", line 2596, in bw_compiler
+[rank0]:     return compile_fx_backward(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/compile_fx.py", line 2321, in compile_fx_backward
+[rank0]:     return inner_compile(
+[rank0]:            ^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/compile_fx.py", line 782, in compile_fx_inner
+[rank0]:     return wrap_compiler_debug(_compile_fx_inner, compiler_name="inductor")(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_dynamo/repro/after_aot.py", line 144, in debug_wrapper
+[rank0]:     inner_compiled_fn = compiler_fn(gm, example_inputs)
+[rank0]:                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/compile_fx.py", line 990, in _compile_fx_inner
+[rank0]:     raise InductorError(e, currentframe()).with_traceback(
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/compile_fx.py", line 974, in _compile_fx_inner
+[rank0]:     mb_compiled_graph = fx_codegen_and_compile(
+[rank0]:                         ^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/compile_fx.py", line 1695, in fx_codegen_and_compile
+[rank0]:     return scheme.codegen_and_compile(gm, example_inputs, inputs_to_check, graph_kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/compile_fx.py", line 1505, in codegen_and_compile
+[rank0]:     compiled_module = graph.compile_to_module()
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/graph.py", line 2319, in compile_to_module
+[rank0]:     return self._compile_to_module()
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/graph.py", line 2329, in _compile_to_module
+[rank0]:     mod = self._compile_to_module_lines(wrapper_code)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/graph.py", line 2397, in _compile_to_module_lines
+[rank0]:     mod = PyCodeCache.load_by_key_path(
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/codecache.py", line 3548, in load_by_key_path
+[rank0]:     mod = _reload_python_module(key, path, set_sys_modules=in_toplevel)
+[rank0]:           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/runtime/compile_tasks.py", line 33, in _reload_python_module
+[rank0]:     exec(code, mod.__dict__, mod.__dict__)
+[rank0]:   File "/tmp/torchinductor_root/vb/cvbjbnaf2phunjpyapf2eybkzrh6vuzduvjodtv3ffesrtsvws4h.py", line 8186, in <module>
+[rank0]:     async_compile.wait(globals())
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/async_compile.py", line 631, in wait
+[rank0]:     self._wait_futures(scope)
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/async_compile.py", line 651, in _wait_futures
+[rank0]:     kernel = result.result()
+[rank0]:              ^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/codecache.py", line 4289, in result
+[rank0]:     return self.result_fn()
+[rank0]:            ^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/async_compile.py", line 470, in get_result
+[rank0]:     kernel.precompile(
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/runtime/triton_heuristics.py", line 451, in precompile
+[rank0]:     self._make_launchers()
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/runtime/triton_heuristics.py", line 614, in _make_launchers
+[rank0]:     launchers.append(result.make_launcher())
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/lib/python3.12/dist-packages/torch/_inductor/runtime/triton_heuristics.py", line 1757, in make_launcher
+[rank0]:     (binary.metadata.num_ctas, *binary.metadata.cluster_dims)
+[rank0]:                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch._inductor.exc.InductorError: AttributeError: 'KernelMetadata' object has no attribute 'cluster_dims'
+[rank0]:[W512 01:53:00.646979931 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+E0512 01:53:02.647000 17265 torch/distributed/elastic/multiprocessing/api.py:882] failed (exitcode: 1) local_rank: 0 (pid: 17334) of binary: /usr/local/bin/python
+Traceback (most recent call last):
+  File "/usr/local/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/torch/distributed/launcher/api.py", line 293, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/workspace/parameter-golf/records/track_10min_16mb/2026-04-30_PR2014_Reproduction_1.0583/train_gpt.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-05-12_01:53:02
+  host      : 931ae0f6b1f2
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 17334)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
