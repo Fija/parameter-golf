@@ -1,0 +1,22 @@
+{
+  "A_bf16_mlp": {
+    "tag": "A_bf16_mlp",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1445456.4444444445,
+    "throughput_median": 1439765.0,
+    "min_throughput": 1430309.0,
+    "max_throughput": 1475114.0,
+    "loss_at_100": "4.3793"
+  },
+  "B_fp8_mlp": {
+    "tag": "B_fp8_mlp",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1405190.3333333333,
+    "throughput_median": 1398139.0,
+    "min_throughput": 1388145.0,
+    "max_throughput": 1449397.0,
+    "loss_at_100": "4.1690"
+  }
+}
