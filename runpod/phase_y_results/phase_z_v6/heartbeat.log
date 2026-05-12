@@ -1,0 +1,490 @@
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:51:14
+[00:51:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+0+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=90G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:51:44
+[00:51:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=92G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:52:14
+[00:52:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:52:44
+[00:52:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:53:14
+[00:53:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:53:44
+[00:53:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+1% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:54:14
+[00:54:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ tail -1
++ df -h /workspace
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:54:44
+[00:54:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:55:14
+[00:55:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:55:44
+[00:55:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=96G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:56:14
+[00:56:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=96G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:56:44
+[00:56:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=96G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:57:14
+[00:57:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=96G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:57:44
+[00:57:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=91G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:58:14
+[00:58:14] + grep -v grep
++ ps -ef
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=93G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:58:44
+[00:58:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=93G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:59:14
+[00:59:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=93G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 00:59:44
+[00:59:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:00:14
+[01:00:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:00:44
+[01:00:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:01:14
+[01:01:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:01:44
+[01:01:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:02:14
+[01:02:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:02:44
+[01:02:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:03:14
+[01:03:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=90G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:03:44
+[01:03:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=93G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:04:14
+[01:04:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=93G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:04:44
+[01:04:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=93G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:05:14
+[01:05:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=93G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:05:44
+[01:05:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:06:14
+[01:06:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:06:44
+[01:06:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:07:14
+[01:07:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:07:44
+[01:07:44] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=94G + printf '\n'
+
+++ date -u +%H:%M:%S
++ printf '[%s] ' 01:08:14
+[01:08:14] + ps -ef
++ grep -v grep
++ grep -cE 'prepare_caseops|train_gpt'
++ tr -d '\n'
+2+ printf ' procs disk='
+ procs disk=+ df -h /workspace
++ tail -1
++ awk '{printf "%s ", $5}'
+2% + free -m
++ awk 'NR==2 {printf "mem=%dG ", $3/1024}'
+mem=95G + printf '\n'
+

@@ -1,0 +1,29 @@
+{
+  "A_baseline": {
+    "tag": "A_baseline",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1378166.2222222222,
+    "throughput_median": 1377070.0,
+    "min_throughput": 1375347.0,
+    "max_throughput": 1384256.0
+  },
+  "B_M_fine": {
+    "tag": "B_M_fine",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1338009.6666666667,
+    "throughput_median": 1337472.0,
+    "min_throughput": 1336433.0,
+    "max_throughput": 1342085.0
+  },
+  "C_N_wide": {
+    "tag": "C_N_wide",
+    "n_logged_steps": 15,
+    "n_steady_state": 9,
+    "throughput_mean": 1357512.888888889,
+    "throughput_median": 1357000.0,
+    "min_throughput": 1355692.0,
+    "max_throughput": 1362118.0
+  }
+}
