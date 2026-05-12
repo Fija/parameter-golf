@@ -19,11 +19,14 @@
 # Plus baseline reference (Triton 3.5.1, original image) by skipping upgrade
 # in variant 0.
 
-set -u
+# Note: NOT setting -u (LRS_* env vars are optional, set -u + ${VAR:-default} reads are tricky)
 set -x
 
 POD_ID=${RUNPOD_POD_ID:-}
-HARD_DEADLINE_MIN=${HARD_DEADLINE_MIN:-60}
+HARD_DEADLINE_MIN=${HARD_DEADLINE_MIN:-90}
+
+# Trap all exits — log who triggered cleanup so we can diagnose mystery pod kills
+trap 'EXIT_CODE=$?; echo "[$(date)] === TRAP EXIT code=$EXIT_CODE at line $LINENO ===" >> /workspace/exit_trap.log; ps -ef >> /workspace/exit_trap.log 2>&1' EXIT
 
 heartbeat_loop() {
   while true; do
@@ -85,8 +88,13 @@ pip install --break-system-packages --upgrade "triton>=3.7.0,<4.0" 2>&1 | tail -
 echo "[$(date)] === AFTER: triton version ==="
 python3 -c "import triton; print('triton', triton.__version__)"
 
-# Verify FA4 still imports after Triton upgrade
-python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4 import OK')" 2>&1 | tail -3 || echo "[WARN] FA4 import broken"
+# Verify everything still imports after Triton upgrade
+echo "[$(date)] === post-upgrade smoke tests ==="
+python3 -c "import torch; print('torch', torch.__version__)" 2>&1 | tail -3
+python3 -c "import triton; print('triton', triton.__version__)" 2>&1 | tail -3
+python3 -c "from flash_attn import flash_attn_func, flash_attn_varlen_func; print('FA2 OK')" 2>&1 | tail -3
+python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4 OK')" 2>&1 | tail -3
+echo "[$(date)] === smoke tests done ==="
 
 # ============= REPO + DATA =============
 BRANCH=${BRANCH:-submission/pr1797-ngram-mix}
