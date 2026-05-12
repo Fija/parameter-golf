@@ -246,71 +246,57 @@ EOF_STUB
 fi
 run_variant A_image_baseline "torch 2.6.0 + triton 3.5.1 (image default)"
 
-# ============= UPGRADE TO TORCH 2.11.0 + TRITON 3.6.0 =============
+# ============= UPGRADE TRITON 3.5.1 → 3.6.0 (KEEP TORCH 2.9.1) =============
+# v1 lesson: upgrading torch breaks FA's ABI (no torch 2.11 wheel for flash-attn);
+# SDPA fallback also fails under torch.compile (Invalid backend on bf16 GQA shape).
+# Cleaner: hold torch 2.9.1 (FA keeps working) and JUST swap triton 3.5.1→3.6.0.
+# Triton 3.6 added some sm_100 codegen improvements without removing cluster_dims.
 echo "[$(date)] ============================================================"
-echo "[$(date)] === UPGRADING: torch 2.6.0 → 2.11.0, triton 3.5.1 → 3.6.0"
+echo "[$(date)] === UPGRADING TRITON ONLY: 3.5.1 → 3.6.0 (torch 2.9.1 unchanged)"
 echo "[$(date)] ============================================================"
+pip install --break-system-packages --upgrade "triton==3.6.0" 2>&1 | tail -3
 
-# Uninstall in order to avoid conflicts
-pip uninstall -y --break-system-packages flash-attn flash_attn 2>&1 | tail -2 || true
-pip uninstall -y --break-system-packages torch torchaudio torchvision triton pytorch-triton 2>&1 | tail -2 || true
-# Clear pip cache (saves disk + forces clean install)
-pip cache purge 2>&1 | tail -1 || true
+# Smoke gate B.1: torch + triton imports
+echo "[$(date)] === smoke B.1: triton 3.6.0 + torch 2.9.1 compatibility ==="
+python3 -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda)"
+python3 -c "import triton; print('triton', triton.__version__)" || { echo "[FATAL] triton import broken"; final_cleanup; exit 1; }
 
-# Install torch 2.11 from PyTorch's cu128 stable index — this also brings the bundled triton 3.6.0
-pip install --break-system-packages --index-url https://download.pytorch.org/whl/cu128 \
-  torch==2.11.0 2>&1 | tail -3
-
-# Smoke gate B.1: torch + triton import
-echo "[$(date)] === smoke B.1: torch+triton after upgrade ==="
-python3 -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda); print('compiled with triton:', torch.backends.cuda.is_built())"
-python3 -c "import triton; print('triton', triton.__version__)" || { echo "[FATAL] triton broken after torch upgrade"; final_cleanup; exit 1; }
-
-# Re-install FA stack against new torch
-# Try prebuilt wheel for torch 2.9 (latest available) — if ABI compatible, save the build time
-FA_WHEEL_URL="https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3/flash_attn-2.8.3+cu12torch2.9cxx11abiTRUE-cp312-cp312-linux_x86_64.whl"
-echo "[$(date)] === installing flash-attn 2.8.3 prebuilt (torch 2.9 wheel — best effort ABI) ==="
-pip install --break-system-packages "$FA_WHEEL_URL" 2>&1 | tail -3 || {
-  echo "[WARN] prebuilt 2.9 wheel failed; trying build from source"
-  pip install --break-system-packages flash-attn==2.8.3 --no-build-isolation 2>&1 | tail -5
-}
-
-# Re-install cute deps (may need fresher version against new torch)
-pip install --break-system-packages --upgrade cuda-python 2>&1 | tail -2 || true
-# Try newer cutlass-dsl first, fall back to 4.2.1 if newer breaks
-pip install --break-system-packages "nvidia-cutlass-dsl==4.2.1" --force-reinstall 2>&1 | tail -2 || true
-# Re-stub experimental (path changes per torch version maybe)
-for EXP in /usr/local/lib/python3.12/dist-packages/nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/__init__.py \
-           /usr/lib/python3.12/dist-packages/nvidia_cutlass_dsl/python_packages/cutlass/cute/experimental/__init__.py; do
-  if [ -f "$EXP" ] && grep -q "NotImplementedError" "$EXP"; then
-    cat > "$EXP" <<EOF_STUB
-import warnings
-warnings.warn("cutlass.cute.experimental stubbed (CUDA <13.1)", stacklevel=2)
-EOF_STUB
-    echo "[$(date)] stubbed $EXP"
-  fi
-done
-
-# Smoke gate B.2: FA import after rebuild
-echo "[$(date)] === smoke B.2: FA imports ==="
+# FA wheels are paired with torch 2.9.1 already; no rebuild needed
+echo "[$(date)] === smoke B.2: FA imports (still paired with torch 2.9.1) ==="
 python3 -c "import flash_attn; print('flash_attn', flash_attn.__version__)" 2>&1 | tail -3 || echo "[WARN] flash_attn import broken"
 python3 -c "from flash_attn import flash_attn_func, flash_attn_varlen_func; print('FA2 OK')" 2>&1 | tail -3 || echo "[WARN] FA2 import broken"
 python3 -c "from flash_attn.cute.interface import flash_attn_func; print('FA4 OK')" 2>&1 | tail -3 || echo "[WARN] FA4 cute import broken"
 
-# Smoke gate B.3: PURE_BENCH_MODE script still patches correctly with new torch
-echo "[$(date)] === smoke B.3: re-verify train_gpt.py syntax ==="
-python3 -m py_compile "$TRAIN_PY" && echo "syntax OK" || { echo "[FATAL] train_gpt.py syntax broke"; final_cleanup; exit 1; }
+# Smoke gate B.3: torch.compile a tiny matmul with triton 3.6 to catch inductor incompat early
+echo "[$(date)] === smoke B.3: torch.compile sanity (will catch KernelMetadata issue early) ==="
+python3 -c "
+import torch
+@torch.compile(dynamic=False, fullgraph=True)
+def f(x): return (x @ x.t()).relu()
+x = torch.randn(256, 128, device='cuda', dtype=torch.bfloat16)
+print('output sum', f(x).sum().item())
+print('torch.compile + triton 3.6 inductor: OK')
+" 2>&1 | tail -10 || { echo "[FATAL] torch.compile broke under triton 3.6 (likely cluster_dims)"; final_cleanup; exit 1; }
 
-# ============= VARIANT B — torch 2.11 + triton 3.6 =============
-run_variant B_torch211_triton36 "torch 2.11.0 + triton 3.6.0 (full upgrade)"
+# ============= VARIANT B — triton 3.6 (torch 2.9.1) =============
+run_variant B_triton36_only "triton 3.6.0 on torch 2.9.1 (clean triton upgrade)"
 
 # ============= VARIANT C — force triton 3.7 (likely breaks; attempt if B succeeded) =============
-B_STEPS=$(grep -c "/100 train_loss:" /workspace/runs/a1_B_torch211_triton36/train.out 2>/dev/null || echo 0)
+B_STEPS=$(grep -c "/100 train_loss:" /workspace/runs/a1_B_triton36_only/train.out 2>/dev/null || echo 0)
 if [ "$B_STEPS" -ge 5 ]; then
   echo "[$(date)] === VARIANT B succeeded ($B_STEPS log lines); attempting C ==="
-  pip install --break-system-packages --upgrade "triton>=3.7.0,<4.0" 2>&1 | tail -3 || true
+  pip install --break-system-packages --upgrade "triton==3.7.0" 2>&1 | tail -3 || true
   python3 -c "import triton; print('triton', triton.__version__)"
-  run_variant C_torch211_triton37 "torch 2.11.0 + force triton 3.7.0 (may break inductor)"
+  # Sanity: torch.compile under 3.7 — if cluster_dims breaks here, skip the variant
+  python3 -c "
+import torch
+@torch.compile(dynamic=False, fullgraph=True)
+def f(x): return (x @ x.t()).relu()
+x = torch.randn(256, 128, device='cuda', dtype=torch.bfloat16)
+print(f(x).sum().item())
+print('triton 3.7 sanity OK')
+" 2>&1 | tail -10
+  run_variant C_triton37_force "triton 3.7.0 forced on torch 2.9.1 (may break inductor)"
 else
   echo "[$(date)] === VARIANT B failed (only $B_STEPS log lines); skipping C ==="
 fi
@@ -319,7 +305,7 @@ fi
 python3 - <<'PYPARSE'
 import re, statistics, json, os
 results = {}
-for tag in ("A_image_baseline", "B_torch211_triton36", "C_torch211_triton37"):
+for tag in ("A_image_baseline", "B_triton36_only", "C_triton37_force"):
     path = f"/workspace/runs/a1_{tag}/train.out"
     if not os.path.exists(path):
         print(f"{tag}: skipped (no log)"); continue
@@ -358,7 +344,7 @@ import os, glob
 from huggingface_hub import HfApi
 api = HfApi(token=os.environ["HF_TOKEN"])
 api.create_repo(repo_id="FijaEE/parameter-golf-fa4-bench", repo_type="dataset", private=True, exist_ok=True)
-for tag in ("A_image_baseline", "B_torch211_triton36", "C_torch211_triton37"):
+for tag in ("A_image_baseline", "B_triton36_only", "C_triton37_force"):
     for f in glob.glob(f"/workspace/runs/a1_{tag}/*"):
         if os.path.isfile(f):
             try:
